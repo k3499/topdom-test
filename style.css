@@ -15,13 +15,13 @@ body {
   margin-bottom: 20px;
 }
 .smi__logo_rus {
-  background: url(/images/ros.png) no-repeat 50%#f7f7f7;
+  background: url(images/ros.png) no-repeat 50%#f7f7f7;
 }
 .smi__logo_efir {
-  background: url(/images/efir.png) no-repeat 50%#f7f7f7;
+  background: url(images/efir.png) no-repeat 50%#f7f7f7;
 }
 .smi__logo_gleb {
-  background: url(/images/gleb.png) no-repeat 50%#f7f7f7;
+  background: url(images/gleb.png) no-repeat 50%#f7f7f7;
 }
 .smi__logo {
   display: block;
