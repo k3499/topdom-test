@@ -62,30 +62,35 @@
 
     <script>
       let openPopupButtons = document.querySelectorAll(".smi__logo")
+      let popupHTML =
+        '<div class="popup"><div class="popup__container">Модальное окно<a class="popup__close" href="#">✕</a></div></div>'
 
       function addPupup() {
-        let popupHTML =
-          '<div class="popup"><div class="popup__container">Модальное окно<a class="popup__close" href="#">✕</a></div></div>'
-        document.body.insertAdjacentHTML("beforeEnd", popupHTML)
+        return new Promise((resolve) => {
+          return resolve(
+            document.body.insertAdjacentHTML("beforeEnd", popupHTML)
+          )
+        })
       }
+
       const addAnimation = async () => {
         const result = await addPupup()
         let popupBg = document.querySelector(".popup")
         let popup = document.querySelector(".popup__container")
-        popupBg.classList.add("active")
-        popup.classList.add("active")
-      }
+        setTimeout(() => {
+          popupBg.classList.add("active")
+          popup.classList.add("active")
+        }, 0)
 
-      const closebtn = async () => {
-        const result = await addPupup()
         let closePopupButton = document.querySelector(".popup__close")
-        let popupBg = document.querySelector(".popup")
-        let popup = document.querySelector(".popup__container")
 
         document.addEventListener("click", (e) => {
           if (e.target === popupBg) {
             popupBg.classList.remove("active")
             popup.classList.remove("active")
+            setTimeout(() => {
+              popupBg.remove()
+            }, 500)
           }
         })
 
@@ -93,17 +98,18 @@
           e.preventDefault()
           popupBg.classList.remove("active")
           popup.classList.remove("active")
+          setTimeout(() => {
+            popupBg.remove()
+          }, 500)
         })
       }
 
       openPopupButtons.forEach((button) => {
         button.addEventListener("click", (e) => {
           e.preventDefault()
-          addAnimation()
+          addAnimation().then()
         })
       })
-
-      closebtn()
     </script>
   </body>
 </html>
