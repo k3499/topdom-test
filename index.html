@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Top Dom</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 class="title">Мы в СМИ</h1>
+      <div class="smi">
+        <h2 class="smi__title">Россия 24 специальный репортаж</h2>
+        <a href="#" class="smi__logo smi__logo_rus">Россия 24</a>
+        <div class="smi__stats">
+          <p class="smi__stats-num">
+            — 100 320
+            <span class="smi__stats-desc"> просмотров а YouTube</span>
+          </p>
+          <p class="smi__stats-num">
+            — 70М<span class="smi__stats-desc"> аудитория канала</span>
+          </p>
+          <p class="smi__stats-num">
+            — 450 024<span class="smi__stats-desc"> показов на ТВ</span>
+          </p>
+        </div>
+      </div>
+      <div class="smi">
+        <h2 class="smi__title">Телеканал Эфир</h2>
+        <a href="#" class="smi__logo smi__logo_efir"> Эфир</a>
+        <div class="smi__stats">
+          <p class="smi__stats-num">
+            — 99 954
+            <span class="smi__stats-desc"> просмотров а YouTube</span>
+          </p>
+          <p class="smi__stats-num">
+            — 5М<span class="smi__stats-desc"> аудитория канала</span>
+          </p>
+          <p class="smi__stats-num">
+            — 300 215<span class="smi__stats-desc"> показов на ТВ</span>
+          </p>
+        </div>
+      </div>
+      <div class="smi">
+        <h2 class="smi__title">Глеб Пьяных</h2>
+        <a href="#" class="smi__logo smi__logo_gleb">Глеб Пьяных</a>
+        <div class="smi__stats">
+          <p class="smi__stats-num">
+            — 140 329
+            <span class="smi__stats-desc"> просмотров а YouTube</span>
+          </p>
+          <p class="smi__stats-num">
+            — 589 000<span class="smi__stats-desc"> аудитория канала</span>
+          </p>
+          <p class="smi__stats-num">
+            — 200 000<span class="smi__stats-desc"> показов на ТВ</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let openPopupButtons = document.querySelectorAll(".smi__logo")
+
+      function addPupup() {
+        let popupHTML =
+          '<div class="popup"><div class="popup__container">Модальное окно<a class="popup__close" href="#">✕</a></div></div>'
+        document.body.insertAdjacentHTML("beforeEnd", popupHTML)
+      }
+      const addAnimation = async () => {
+        const result = await addPupup()
+        let popupBg = document.querySelector(".popup")
+        let popup = document.querySelector(".popup__container")
+        popupBg.classList.add("active")
+        popup.classList.add("active")
+      }
+
+      const closebtn = async () => {
+        const result = await addPupup()
+        let closePopupButton = document.querySelector(".popup__close")
+        let popupBg = document.querySelector(".popup")
+        let popup = document.querySelector(".popup__container")
+
+        document.addEventListener("click", (e) => {
+          if (e.target === popupBg) {
+            popupBg.classList.remove("active")
+            popup.classList.remove("active")
+          }
+        })
+
+        closePopupButton.addEventListener("click", (e) => {
+          e.preventDefault()
+          popupBg.classList.remove("active")
+          popup.classList.remove("active")
+        })
+      }
+
+      openPopupButtons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          e.preventDefault()
+          addAnimation()
+        })
+      })
+
+      closebtn()
+    </script>
+  </body>
+</html>
